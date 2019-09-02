@@ -3,7 +3,8 @@ UsePAM no
 PasswordAuthentication no
 PrintMotd no
 X11Forwarding no
-AllowTcpForwarding no
-AllowAgentForwarding no
-PermitTunnel no
+AllowTcpForwarding yes
+AllowAgentForwarding yes
+PermitTunnel yes
+PermitOpen any
 Subsystem sftp /usr/lib/openssh/sftp-server
