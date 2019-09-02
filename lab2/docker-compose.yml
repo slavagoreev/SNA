@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+    ssh:
+        build:
+            context: ./docker
+            args:
+                SSH_MASTER_USER: ${SSH_MASTER_USER}
+                SSH_MASTER_PASS: ${SSH_MASTER_PASS}
+        hostname: ssh
+        networks:
+          - external_bridge
+          - internal_bridge
+        ports:
+            - "2222:22"
+
+    documentation:
+      image: lukastosic/swaggerui-docker
+      restart: always
+      networks:
+          - internal_bridge
+      volumes:
+          - ./swagger.json /app/swagger.json
+
+networks:
+    external_bridge:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 192.168.1.0/27
+    internal_bridge:
+        internal: true
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 192.168.2.0/27
