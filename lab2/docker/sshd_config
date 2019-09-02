@@ -1,5 +1,6 @@
 ChallengeResponseAuthentication no
 UsePAM no
+PasswordAuthentication no
 PrintMotd no
 X11Forwarding no
 AllowTcpForwarding no
