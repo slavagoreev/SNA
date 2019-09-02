@@ -17,6 +17,7 @@ RUN chmod +x /usr/local/bin/user.sh
 RUN /usr/local/bin/user.sh
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY ssh_keys/rsa.pub /home/${SSH_MASTER_USER}/.ssh/authorized_keys
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
